@@ -3,8 +3,10 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func converTobin(n int) string {
@@ -24,15 +26,26 @@ func ptintFile(filename string) {
 	if err != nil {
 		panic(err)
 	}
-	scaner := bufio.NewScanner(file)
 
-	for scaner.Scan() {
-		fmt.Println(scaner.Text())
+	printFileContents(file)
+}
+
+func printFileContents(reader io.Reader) {
+	scanner := bufio.NewScanner(reader)
+
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
 	}
 }
 
 func main() {
 	fmt.Println(converTobin(10))
 	fmt.Println(converTobin(0))
-	ptintFile("abc.txt")
+	ptintFile("basic/abc.txt")
+
+	s := `qqq
+www
+eee
+rrr`
+	printFileContents(strings.NewReader(s))
 }
