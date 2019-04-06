@@ -20,4 +20,13 @@ func main() {
 	root.PreTraverse()
 	fmt.Println()
 	root.BackTraverse()
+	fmt.Println("-------------------")
+	root.NewTraverse()
+
+	fmt.Println("-------------------")
+	nodeCount := 0
+	root.TraverseFunc(func(node *tree.Node) {
+		nodeCount++
+	})
+	fmt.Println("nodecount is ", nodeCount)
 }
